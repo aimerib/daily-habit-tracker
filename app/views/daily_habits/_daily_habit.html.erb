@@ -1,0 +1,62 @@
+<div id="<%= dom_id daily_habit %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Date:</strong>
+    <%= daily_habit.date %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Hours slept:</strong>
+    <%= daily_habit.hours_slept %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Breakfast:</strong>
+    <%= daily_habit.breakfast %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Lunch:</strong>
+    <%= daily_habit.lunch %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Dinner:</strong>
+    <%= daily_habit.dinner %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Morning meds:</strong>
+    <%= daily_habit.morning_meds %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Evening meds:</strong>
+    <%= daily_habit.evening_meds %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Exercise minutes:</strong>
+    <%= daily_habit.exercise_minutes %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Daily steps:</strong>
+    <%= daily_habit.daily_steps %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Mood:</strong>
+    <%= daily_habit.mood %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Energy:</strong>
+    <%= daily_habit.energy %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this entry", daily_habit, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this entry", edit_daily_habit_path(daily_habit), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
