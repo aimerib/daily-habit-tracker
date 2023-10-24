@@ -8,7 +8,44 @@
     <%= link_to "New daily habit", new_daily_habit_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div id="daily_habits" class="min-w-full">
-    <%= render @daily_habits %>
-  </div>
+  <table class="min-w-full table-auto border-collapse border border-gray-300 mt-10">
+    <thead>
+      <tr>
+        <th class="border border-gray-300 px-4 py-2">Date</th>
+        <th class="border border-gray-300 px-4 py-2">Hours Slept</th>
+        <th class="border border-gray-300 px-4 py-2">Breakfast</th>
+        <th class="border border-gray-300 px-4 py-2">Lunch</th>
+        <th class="border border-gray-300 px-4 py-2">Dinner</th>
+        <th class="border border-gray-300 px-4 py-2">Morning Meds</th>
+        <th class="border border-gray-300 px-4 py-2">Evening Meds</th>
+        <th class="border border-gray-300 px-4 py-2">Exercise Minutes</th>
+        <th class="border border-gray-300 px-4 py-2">Daily Steps</th>
+        <th class="border border-gray-300 px-4 py-2">Mood</th>
+        <th class="border border-gray-300 px-4 py-2">Energy</th>
+        <th class="border border-gray-300 px-4 py-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @daily_habits.each do |daily_habit| %>
+        <tr>
+          <td class="border border-gray-300 px-4 py-2 text-center"><%= daily_habit.date %></td>
+          <td class="border border-gray-300 px-4 py-2 text-center"><%= daily_habit.hours_slept %></td>
+          <td class="border border-gray-300 px-4 py-2 text-center"><%= daily_habit.breakfast ? 'Yes' : 'No' %></td>
+          <td class="border border-gray-300 px-4 py-2 text-center"><%= daily_habit.lunch ? 'Yes' : 'No' %></td>
+          <td class="border border-gray-300 px-4 py-2 text-center"><%= daily_habit.dinner ? 'Yes' : 'No' %></td>
+          <td class="border border-gray-300 px-4 py-2 text-center"><%= daily_habit.morning_meds ? 'Yes' : 'No' %></td>
+          <td class="border border-gray-300 px-4 py-2 text-center"><%= daily_habit.evening_meds ? 'Yes' : 'No' %></td>
+          <td class="border border-gray-300 px-4 py-2 text-center"><%= daily_habit.exercise_minutes %></td>
+          <td class="border border-gray-300 px-4 py-2 text-center"><%= daily_habit.daily_steps %></td>
+          <td class="border border-gray-300 px-4 py-2 text-center"><%= daily_habit.mood %></td>
+          <td class="border border-gray-300 px-4 py-2 text-center"><%= daily_habit.energy %></td>
+          <td class="border border-gray-300 px-4 py-2 flex flex-col gap-1">
+            <%= link_to 'Show', daily_habit, class: "rounded-md py-1 px-2 bg-gray-600 text-white block font-medium text-center" %>
+            <%= link_to 'Edit', edit_daily_habit_path(daily_habit), class: "rounded-md py-1 px-2 bg-gray-600 text-white block font-medium text-center" %>
+            <%= link_to 'Destroy', daily_habit, method: :delete, data: { confirm: 'Are you sure?' }, class: "rounded-md py-1 px-2 bg-red-600 text-white block font-medium text-center" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
