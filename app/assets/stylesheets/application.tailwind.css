@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .table--body_row {
+    @apply border border-gray-300 px-4 py-2 text-center;
+  }
+  tr:nth-child(even) {
+    @apply bg-gray-100;
+  }
+  tr:nth-child(odd) {
+    @apply bg-white;
+  }
+  tr:hover {
+    @apply bg-gray-200;
+  }
+
+  .table--header {
+    @apply border border-gray-300 px-4 py-2 bg-slate-500 text-white;
+  }
+}
 /*
 
 @layer components {
