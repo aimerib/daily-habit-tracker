@@ -1,78 +1,80 @@
 <%= form_with(model: daily_habit, class: "contents") do |form| %>
-  <% if daily_habit.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(daily_habit.errors.count, "error") %> prohibited this daily_habit from being saved:</h2>
+  <div class="border border-gray-300 rounded-md px-5 pb-5 mt-5 mb-10">
+    <% if daily_habit.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(daily_habit.errors.count, "error") %> prohibited this daily_habit from being saved:</h2>
 
-      <ul>
-        <% daily_habit.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+          <% daily_habit.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <div class="my-5">
-    <%= form.label :date %>
-    <%= form.date_field :date, value: @daily_habit.date || Date.today, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :hours_slept %>
-    <%= form.number_field :hours_slept, min: 0, max: 24, step: 0.5, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="flex content-evenly justify-evenly flex-col md:flex-row">
     <div class="my-5">
-      <%= form.label :breakfast %>
-      <%= form.check_box :breakfast, class: "block mt-2 h-5 w-5" %>
+      <%= form.label :date %>
+      <%= form.date_field :date, value: @daily_habit.date || Date.today, class: "block shadow-white rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
     <div class="my-5">
-      <%= form.label :lunch %>
-      <%= form.check_box :lunch, class: "block mt-2 h-5 w-5" %>
+      <%= form.label :hours_slept %>
+      <%= form.number_field :hours_slept, min: 0, max: 24, step: 0.5, class: "block shadow-white rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="flex content-evenly justify-evenly flex-col md:flex-row">
+      <div class="my-5">
+        <%= form.label :breakfast %>
+        <%= form.check_box :breakfast, class: "block mt-2 h-5 w-5" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :lunch %>
+        <%= form.check_box :lunch, class: "block mt-2 h-5 w-5" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :dinner %>
+        <%= form.check_box :dinner, class: "block mt-2 h-5 w-5" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :morning_meds %>
+        <%= form.check_box :morning_meds, class: "block mt-2 h-5 w-5" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :evening_meds %>
+        <%= form.check_box :evening_meds, class: "block mt-2 h-5 w-5" %>
+      </div>
     </div>
 
     <div class="my-5">
-      <%= form.label :dinner %>
-      <%= form.check_box :dinner, class: "block mt-2 h-5 w-5" %>
+      <%= form.label :exercise_minutes %>
+      <%= form.number_field :exercise_minutes, class: "block shadow-white rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
     <div class="my-5">
-      <%= form.label :morning_meds %>
-      <%= form.check_box :morning_meds, class: "block mt-2 h-5 w-5" %>
+      <%= form.label :daily_steps %>
+      <%= form.number_field :daily_steps, class: "block shadow-white rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
-    <div class="my-5">
-      <%= form.label :evening_meds %>
-      <%= form.check_box :evening_meds, class: "block mt-2 h-5 w-5" %>
+    <div class="my-5 flex flex-col">
+      <%= form.label :mood %>
+      <span id="moodValue"><%= @daily_habit.mood || 6 %></span> <!-- Default to 5 if no value is set -->
+      <%= form.range_field :mood, min: 1, max: 10, class: "block shadow-white rounded-md outline-none mt-2 w-full", oninput: "updateMoodValue(this.value)" %>
     </div>
-  </div>
 
-  <div class="my-5">
-    <%= form.label :exercise_minutes %>
-    <%= form.number_field :exercise_minutes, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+    <div class="my-5 flex flex-col">
+      <%= form.label :energy %>
+      <span id="energyValue"><%= @daily_habit.energy || 6 %></span> <!-- Default to 5 if no value is set -->
+      <%= form.range_field :energy, min: 1, max: 10, class: "block shadow-white rounded-md outline-none mt-2 w-full", oninput: "updateEnergyValue(this.value)" %>
+    </div>
 
-  <div class="my-5">
-    <%= form.label :daily_steps %>
-    <%= form.number_field :daily_steps, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5 flex flex-col">
-    <%= form.label :mood %>
-    <span id="moodValue"><%= @daily_habit.mood || 5 %></span> <!-- Default to 5 if no value is set -->
-    <%= form.range_field :mood, min: 1, max: 10, class: "block shadow rounded-md outline-none mt-2 w-full", oninput: "updateMoodValue(this.value)" %>
-  </div>
-
-  <div class="my-5 flex flex-col">
-    <%= form.label :energy %>
-    <span id="energyValue"><%= @daily_habit.energy || 5 %></span> <!-- Default to 5 if no value is set -->
-    <%= form.range_field :energy, min: 1, max: 10, class: "block shadow rounded-md outline-none mt-2 w-full", oninput: "updateEnergyValue(this.value)" %>
-  </div>
-
-  <div class=" flex flex-col md:flex-row justify-center gap-5">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-    <%= link_to "Back to daily habits", daily_habits_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-center" %>
+    <div class=" flex flex-col md:flex-row justify-center gap-5 mt-10">
+      <%= form.submit class: "rounded-lg py-3 px-5 bg-orange-600 text-white inline-block font-medium cursor-pointer" %>
+      <%= link_to "Back to daily habits", daily_habits_path, class: "rounded-lg py-3 px-5 bg-gray-600 inline-block font-medium text-center" %>
+    </div>
   </div>
 <% end %>
 <script>

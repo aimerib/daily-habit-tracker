@@ -5,7 +5,7 @@
 
   <div class="flex justify-between items-center sm:flex-row flex-col gap-5">
     <h1 class="font-bold text-4xl">Daily habits</h1>
-    <%= link_to "New daily habit", new_daily_habit_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <%= link_to "New daily habit", new_daily_habit_path, class: "rounded-lg py-3 px-5 bg-orange-600 text-white block font-medium" %>
   </div>
 
   <%# Desktop Table %>
@@ -41,8 +41,8 @@
           <td class="table--body_row"><%= daily_habit.mood %></td>
           <td class="table--body_row"><%= daily_habit.energy %></td>
           <td class="table--body_row flex flex-col gap-1">
-            <%= link_to 'Show', daily_habit, class: "rounded-md py-1 px-2 bg-gray-600 text-white block font-medium text-center" %>
-            <%= link_to 'Edit', edit_daily_habit_path(daily_habit), class: "rounded-md py-1 px-2 bg-gray-600 text-white block font-medium text-center" %>
+            <%= link_to 'Show', daily_habit, class: "rounded-md py-1 px-2 bg-orange-400 text-white block font-medium text-center" %>
+            <%= link_to 'Edit', edit_daily_habit_path(daily_habit), class: "rounded-md py-1 px-2 bg-orange-400 text-white block font-medium text-center" %>
             <%= link_to 'Destroy', daily_habit, method: :delete, data: { confirm: 'Are you sure?' }, class: "rounded-md py-1 px-2 bg-red-600 text-white block font-medium text-center" %>
           </td>
         </tr>
@@ -68,8 +68,8 @@
         <!-- ... add other fields ... -->
 
         <div class="mt-2 flex gap-2">
-          <%= link_to 'Show', daily_habit, class: "rounded-md py-1 px-2 bg-gray-600 text-white font-medium text-center" %>
-          <%= link_to 'Edit', edit_daily_habit_path(daily_habit), class: "rounded-md py-1 px-2 bg-gray-600 text-white font-medium text-center" %>
+          <%= link_to 'Show', daily_habit, class: "rounded-md py-1 px-2 bg-orange-400 text-white font-medium text-center" %>
+          <%= link_to 'Edit', edit_daily_habit_path(daily_habit), class: "rounded-md py-1 px-2 bg-orange-400 text-white font-medium text-center" %>
           <%= link_to 'Destroy', daily_habit, method: :delete, data: { confirm: 'Are you sure?' }, class: "rounded-md py-1 px-2 bg-red-600 text-white font-medium text-center" %>
         </div>
       </div>
