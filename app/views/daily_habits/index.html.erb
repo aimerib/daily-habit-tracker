@@ -3,12 +3,13 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center sm:flex-row flex-col gap-5">
     <h1 class="font-bold text-4xl">Daily habits</h1>
     <%= link_to "New daily habit", new_daily_habit_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <table class="min-w-full table-auto border-collapse border border-gray-300 mt-10">
+  <%# Desktop Table %>
+  <table class="min-w-full table-auto border-collapse border border-gray-300 mt-10 hidden lg:table">
     <thead>
       <tr>
         <th class="table--header">Date</th>
@@ -48,4 +49,30 @@
       <% end %>
     </tbody>
   </table>
+
+  <%# Mobile Table %>
+  <div class="lg:hidden mt-10">
+    <% @daily_habits.each do |daily_habit| %>
+      <div class="mb-4 p-4 border border-gray-300 rounded-md">
+        <p><strong>Date:</strong> <%= daily_habit.date %></p>
+        <p><strong>Hours Slept:</strong> <%= daily_habit.hours_slept %></p>
+        <p><strong>Breakfast:</strong> <%= daily_habit.breakfast ? 'Yes' : 'No' %></p>
+        <p><strong>Lunch:</strong> <%= daily_habit.lunch ? 'Yes' : 'No' %></p>
+        <p><strong>Dinner:</strong> <%= daily_habit.dinner ? 'Yes' : 'No' %></p>
+        <p><strong>Morning Meds:</strong> <%= daily_habit.morning_meds ? 'Yes' : 'No' %></p>
+        <p><strong>Evening Meds:</strong> <%= daily_habit.evening_meds ? 'Yes' : 'No' %></p>
+        <p><strong>Exercise Minutes:</strong> <%= daily_habit.exercise_minutes %></p>
+        <p><strong>Daily Steps:</strong> <%= daily_habit.daily_steps %></p>
+        <p><strong>Mood:</strong> <%= daily_habit.mood %></p>
+        <p><strong>Energy:</strong> <%= daily_habit.energy %></p>
+        <!-- ... add other fields ... -->
+
+        <div class="mt-2 flex gap-2">
+          <%= link_to 'Show', daily_habit, class: "rounded-md py-1 px-2 bg-gray-600 text-white font-medium text-center" %>
+          <%= link_to 'Edit', edit_daily_habit_path(daily_habit), class: "rounded-md py-1 px-2 bg-gray-600 text-white font-medium text-center" %>
+          <%= link_to 'Destroy', daily_habit, method: :delete, data: { confirm: 'Are you sure?' }, class: "rounded-md py-1 px-2 bg-red-600 text-white font-medium text-center" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

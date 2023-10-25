@@ -21,7 +21,7 @@
     <%= form.number_field :hours_slept, min: 0, max: 24, step: 0.5, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="flex content-evenly justify-evenly">
+  <div class="flex content-evenly justify-evenly flex-col md:flex-row">
     <div class="my-5">
       <%= form.label :breakfast %>
       <%= form.check_box :breakfast, class: "block mt-2 h-5 w-5" %>
@@ -70,8 +70,9 @@
     <%= form.range_field :energy, min: 1, max: 10, class: "block shadow rounded-md outline-none mt-2 w-full", oninput: "updateEnergyValue(this.value)" %>
   </div>
 
-  <div class="inline">
+  <div class=" flex flex-col md:flex-row justify-center gap-5">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= link_to "Back to daily habits", daily_habits_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-center" %>
   </div>
 <% end %>
 <script>
