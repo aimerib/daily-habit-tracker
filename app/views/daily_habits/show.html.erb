@@ -7,11 +7,11 @@
     <%= link_to "Back to Daily Habits", daily_habits_path, class: "rounded-lg py-3 px-5 bg-gray-600 font-medium" %>
 
 
-    <div class=" w-96 border-2 border-white rounded px-5 mt-10">
+    <div class=" w-72 border-2 border-white rounded px-5 mt-10">
       <%= render @daily_habit %>
     </div>
 
-    <div class="flex flex-row justify-between">
+    <div class="flex flex-row justify-between mb-20">
       <%= link_to "Edit this entry", edit_daily_habit_path(@daily_habit), class: "mt-2 inline-block text-center rounded-lg py-3 px-5 bg-orange-600 font-medium" %>
       <%# <div class="inline-block ml-2"> %>
       <%= button_to "Destroy this entry", daily_habit_path(@daily_habit), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-red-600 font-medium" %>
