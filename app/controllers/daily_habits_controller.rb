@@ -1,4 +1,5 @@
 class DailyHabitsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_daily_habit, only: %i[ show edit update destroy ]
 
   # GET /daily_habits or /daily_habits.json

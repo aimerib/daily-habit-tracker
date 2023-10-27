@@ -1,0 +1,24 @@
+<h2 class="text-white">Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field my-4">
+    <%= f.label :email, class: "block text-white" %>
+    <%= f.email_field :email, class: "block w-full p-2 mt-1 bg-gray-700 text-white rounded-md", autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field my-4">
+    <%= f.label :password, class: "block text-white" %>
+    <%= f.password_field :password, class: "block w-full p-2 mt-1 bg-gray-700 text-white rounded-md", autocomplete: "current-password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field flex items-center my-4">
+      <%= f.check_box :remember_me, class: "text-orange-600 mr-2" %>
+      <%= f.label :remember_me, class: "text-white" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in", class: "bg-orange-600 text-white px-4 py-2 rounded-md" %>
+  </div>
+<% end %>

@@ -12,7 +12,17 @@
   </head>
 
   <body class="bg-gray-800 text-white">
-    <main class="container mx-auto mt-28 px-5 flex">
+    <%# Make this prettier with stimulus and tailwind %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%#  %>
+    <main class="container mx-auto mt-28 px-5 flex flex-col">
+      <%# devise logout link is current user logged in %>
+      <% if user_signed_in? %>
+        <p>
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md mb-10" %>
+        </p>
+      <% end %>
       <%= yield %>
     </main>
   </body>
