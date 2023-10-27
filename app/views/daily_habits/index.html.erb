@@ -5,7 +5,11 @@
 
   <div class="flex justify-between items-center sm:flex-row flex-col gap-5">
     <h1 class="font-bold text-4xl">Daily habits</h1>
-    <%= link_to "New daily habit", new_daily_habit_path, class: "rounded-lg py-3 px-5 bg-orange-600 text-white block font-medium" %>
+    <div class="flex gap-5">
+      <%= link_to "New daily habit", new_daily_habit_path, class: "rounded-lg py-3 px-5 bg-orange-600 text-white block font-medium" %>
+      <%# Download CSV %>
+      <%= link_to "Download CSV", daily_habits_path(format: :csv), class: "rounded-lg py-3 px-5 bg-orange-600 text-white block font-medium" %>
+    </div>
   </div>
 
   <%# Desktop Table %>
