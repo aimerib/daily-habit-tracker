@@ -3,7 +3,7 @@ class DailyHabitsController < ApplicationController
 
   # GET /daily_habits or /daily_habits.json
   def index
-    @daily_habits = DailyHabit.all
+    @daily_habits = DailyHabit.all.order(date: :desc)
   end
 
   # GET /daily_habits/1 or /daily_habits/1.json
