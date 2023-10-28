@@ -1,3 +1,4 @@
+<%= evil_icons_sprite %>
 <div class="w-full">
   <div class="flex justify-between items-center sm:flex-row flex-col gap-5">
     <h1 class="font-bold text-4xl">Daily habits</h1>
@@ -40,10 +41,10 @@
           <td class="table--body_row"><%= daily_habit.daily_steps %></td>
           <td class="table--body_row"><%= daily_habit.mood %></td>
           <td class="table--body_row"><%= daily_habit.energy %></td>
-          <td class="table--body_row flex flex-col gap-1">
-            <%= link_to 'Show', daily_habit, class: "rounded-md py-1 px-2 bg-orange-400 text-white block font-medium text-center" %>
-            <%= link_to 'Edit', edit_daily_habit_path(daily_habit), class: "rounded-md py-1 px-2 bg-orange-400 text-white block font-medium text-center" %>
-            <%= link_to 'Destroy', daily_habit, method: :delete, data: { confirm: 'Are you sure?' }, class: "rounded-md py-1 px-2 bg-red-600 text-white block font-medium text-center" %>
+          <td class="table--body_row flex flex-row gap-1">
+            <%= link_to evil_icon('ei-eye', size: :m), daily_habit, class: "rounded-md py-1 px-2 text-orange-400 text-white block font-medium text-center" %>
+            <%= link_to evil_icon('ei-pencil', size: :m), edit_daily_habit_path(daily_habit), class: "rounded-md py-1 px-2 text-orange-400 text-white block font-medium text-center" %>
+            <%= link_to evil_icon('ei-trash', size: :m), daily_habit, method: :delete, data: { confirm: 'Are you sure?' }, class: "rounded-md py-1 px-2 text-red-600 text-white block font-medium text-center" %>
           </td>
         </tr>
       <% end %>
